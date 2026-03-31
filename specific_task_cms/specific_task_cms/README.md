@@ -259,8 +259,8 @@ Notebook-section design notes:
 1. `notebook/1-Hybrid_Lorentz_ParT_MAE_JetClass_GSoC2026.ipynb`
 2. `notebook/2-Hybrid_Lorentz_ParT_MAE_JetClass_GSoC2026 .ipynb`
 3. `notebook/3-Hybrid_Lorentz_ParT_MAE_JetClass_GSoC2026.ipynb`
-4. `notebook/3_v6-Hybrid_Lorentz_ParT_MAE_JetClass_GSoC2026.ipynb`
-5. `notebook/4-Hybrid_Lorentz_ParT_MAE_JetClass_GSoC2026.ipynb`
+4. `notebook/4-Hybrid_Lorentz_ParT_MAE_JetClass_GSoC2026.ipynb`
+5. `notebook/5-Hybrid_Lorentz_ParT_MAE_JetClass_GSoC2026.ipynb`
 6. `notebook/6-Hybrid_LorentzParT_MAE_GSoC2026_FINAL -.ipynb`
 
 Recommended pattern per notebook:
