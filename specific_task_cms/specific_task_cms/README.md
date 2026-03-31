@@ -168,15 +168,15 @@ Each notebook is a concrete stage in the model evolution.
   - Added mass-target normalization and tuning updates.
   - Improvement target: recover performance and improve feature-scale handling.
 
-- **NB3 → NB3_v6**
+- **NB3 → NB4**
   - Strengthened MAE pretraining and extended fine-tuning strategy.
   - Improvement target: improve latent representation quality before supervised optimization.
 
-- **NB3_v6 → NB4**
+- **NB4 → NB5**
   - Consolidated successful changes and enforced stronger seeded checks.
   - Improvement target: verify gains are stable across runs.
 
-- **NB4 → NB6 (Final)**
+- **NB5 → NB6 (Final)**
   - Finalized benchmark configuration and optimization stack.
   - Improvement target: maximize final score while preserving reproducibility.
 
