@@ -6,6 +6,36 @@ This project targets **10-class JetClass event classification** using a **hybrid
 The core research question is whether a physics-aware hybrid model, trained in a two-stage self-supervised pipeline, can improve both **final performance** and **training reliability**.  
 All final claims and metrics are reported from: `notebook/6-Hybrid_LorentzParT_MAE_GSoC2026_FINAL -.ipynb`.
 
+## Concise End-to-End Summary
+- **Main modeling approach:** A hybrid **ParT branch + Lorentz-aware branch** with **attention-gated fusion**, trained via **MAE pretraining → supervised fine-tuning**.
+- **Training/evaluation workflow:** Load JetClass ROOT data, build per-particle + pairwise physics features, pretrain with masking, and fine-tune on 10 labels.  
+  Then evaluate with **accuracy + macro AUC (OvR/OvO)**, per-class rejection metrics, ablations, and multi-seed comparison.
+- **Final reported result (Notebook 6):** **Test Accuracy = 0.7020**, **Macro AUC (OvR) = 0.9536**, **Macro AUC (OvO) = 0.9536** (as reported by notebook output).
+- **Ablation evidence:** `with_mae_pretrain` (**val_acc 0.5961**, **val_auc 0.919528**) outperforms `no_mae_pretrain` (**val_acc 0.5726**, **val_auc 0.911468**).
+- **Reliability/stability evidence:** Multi-seed summary reports **+0.0282 accuracy**, **+0.0070 AUC**, and **~4.5× lower accuracy variance** with MAE pretraining.
+
+## Tech Stack
+- **Language/format:** Python in Jupyter notebooks (`.ipynb`)
+- **Deep learning:** PyTorch (`torch`, `torch.nn`, AMP, optional `torch.compile` fallback logic)
+- **HEP data I/O:** `uproot`, `awkward` for JetClass ROOT ingestion
+- **Data/science stack:** NumPy, Pandas, scikit-learn
+- **Visualization:** Matplotlib
+- **Utilities:** tqdm, dataclasses, pathlib
+
+## Dataset Size & Sampling Strategy
+- **Dataset:** JetClass ROOT files (path default in notebooks: `../datasets/JetClass`)
+- **Classes:** 10-way jet classification
+- **Sampling policy (final notebook config):**
+  - `SAMPLE_SIZE_LIMIT = 100000`
+  - `ENFORCE_STRICT_100K_WHEN_AVAILABLE = True`
+  - `SAMPLING_SEED = 42`
+  - reservoir-style sampling while streaming events from files
+- **Observed final run in Notebook 6 outputs:**
+  - `Total loaded events: 250000` (events read before downsampling)
+  - `Sampled events: 100000`
+  - split: `80000 / 10000 / 10000` (**80/10/10**)
+  - `MAX_PARTICLES = 50` per event
+
 ##  Key Contributions
 - Designed a **hybrid ParT + Lorentz model** to combine particle-interaction modeling with Lorentz-aware representation learning.
 - Demonstrated measurable **MAE pretraining impact** through controlled pretrain-vs-scratch comparisons.
