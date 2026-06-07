@@ -8,8 +8,9 @@ All final claims and metrics are reported from: `notebook/6-Hybrid_LorentzParT_M
 
 ## Concise End-to-End Summary
 - **Main modeling approach:** A hybrid **ParT branch + Lorentz-aware branch** with **attention-gated fusion**, trained via **MAE pretraining → supervised fine-tuning**.
-- **Training/evaluation workflow:** Load JetClass ROOT data, build per-particle + pairwise physics features, pretrain with masking, fine-tune on 10 labels, then evaluate with **accuracy + macro AUC (OvR/OvO)**, per-class rejection metrics, ablations, and multi-seed comparison.
-- **Final reported result (Notebook 6):** **Test Accuracy = 0.7020**, **Macro AUC (OvR) = 0.9536**, **Macro AUC (OvO) = 0.9536** (both AUC values are exactly as printed by the final notebook output).
+- **Training/evaluation workflow:** Load JetClass ROOT data, build per-particle + pairwise physics features, pretrain with masking, and fine-tune on 10 labels.  
+  Then evaluate with **accuracy + macro AUC (OvR/OvO)**, per-class rejection metrics, ablations, and multi-seed comparison.
+- **Final reported result (Notebook 6):** **Test Accuracy = 0.7020**, **Macro AUC (OvR) = 0.9536**, **Macro AUC (OvO) = 0.9536** (as reported by notebook output).
 - **Ablation evidence:** `with_mae_pretrain` (**val_acc 0.5961**, **val_auc 0.919528**) outperforms `no_mae_pretrain` (**val_acc 0.5726**, **val_auc 0.911468**).
 - **Reliability/stability evidence:** Multi-seed summary reports **+0.0282 accuracy**, **+0.0070 AUC**, and **~4.5× lower accuracy variance** with MAE pretraining.
 
